@@ -53,7 +53,7 @@ jobs:
 
       
       - name: Push imagem para o Docker Hub
-        run: docker tag frontend:latest meu-usuario/frontend:latest && docker push meu-usuario/frontend:latest
+        run: docker tag frontend:latest laviniamonteiro/frontend:latest && docker push laviniamonteiro/frontend:latest
 
       - name: Deploy para Vercel
         uses: amondnet/vercel-action@v20
