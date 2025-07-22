@@ -1,0 +1,12 @@
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/components/AdminReservationCrud/AdminReservationCrud.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/components/BedroomCard/index.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/components/ProfileInfo/index.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/components/Reservation/index.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/components/AdminReservation.test.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/components/BedroomCard.test.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/components/ProfileInfo.test.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/components/RegisterForm.test.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/components/Reservation.test.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/contexts/AuthContext.test.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/contexts/BedroomContext.test.tsx
+/home/ubuntu/PLW-main-corrigido/PLW-main-corrigido/frontend/src/__tests__/integration/Register.test.tsx
