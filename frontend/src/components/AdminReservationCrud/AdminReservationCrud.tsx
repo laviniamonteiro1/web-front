@@ -1,7 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { ReservationContext } from '@/contexts/ReservationContext';
 import { Container, Title, ReservationList, ReservationItem, StatusBadge, DetailsButton, DeleteButton, CancelButton, ButtonContainer, FormContainer, SectionTitle } from './styles';
+// Removido 'Reservation' que não é usado diretamente aqui
+import type  {ReservationStatusBackend, ReservationStatusDisplay } from '@/types/ReservationType';
+import type { Reservation } from '@/types/ReservationType'; // Mantendo a importação de Reservation para tipagem explícita no map
 
+const mapStatusForDisplay = (status: ReservationStatusBackend): ReservationStatusDisplay => {
+    switch (status) {
+        case 'confirmed': return 'Confirmado';
+        case 'cancelled': return 'Cancelada';
+        case 'completed': return 'Finalizado';
+        default: return 'Confirmado';
+    }
+};
 const AdminReservationCrud: React.FC = () => {
   const { 
     reservations, 
@@ -54,7 +65,14 @@ const AdminReservationCrud: React.FC = () => {
   const handleEditReservation = (id: string) => {
     const reservation = reservations.find((res) => res.id === id);
     if (reservation) {
-      setFormData(reservation);
+      setFormData({
+        id: reservation.id,
+        title: reservation.title,
+        address: reservation.address,
+        checkIn: reservation.check_in,
+        checkOut: reservation.check_out,
+        status: mapStatusForDisplay(reservation.status),
+      });
     }
   };
 
@@ -65,7 +83,8 @@ const AdminReservationCrud: React.FC = () => {
         address: formData.address,
         checkIn: formData.checkIn,
         checkOut: formData.checkOut,
-        status: formData.status,
+        // **** CORREÇÃO AQUI: Use mapStatusToBackend para enviar o status ****
+        status: formData.status, // O type do updateReservation no Contexto já faz o mapeamento
       });
       setFormData({
         id: '',
@@ -143,20 +162,19 @@ const AdminReservationCrud: React.FC = () => {
         <p>Carregando reservas...</p>
       ) : (
         <ReservationList>
-          {reservations.map((reservation) => (
+          {reservations.map((reservation: Reservation) => (
             <ReservationItem key={reservation.id}>
               <h3>{reservation.title}</h3>
               <p><strong>Endereço:</strong> {reservation.address}</p>
-              <p><strong>Check-in:</strong> {reservation.checkIn}</p>
-              <p><strong>Check-out:</strong> {reservation.checkOut}</p>
-              <StatusBadge status={reservation.status}>
-                {reservation.status}
+              <p><strong>Check-in:</strong> {reservation.check_in}</p>
+              <p><strong>Check-out:</strong> {reservation.check_out}</p>
+              <StatusBadge status={mapStatusForDisplay(reservation.status)}>
+                {mapStatusForDisplay(reservation.status)}
               </StatusBadge>
               <ButtonContainer>
                 <DetailsButton onClick={() => handleEditReservation(reservation.id)}>
                   Editar
                 </DetailsButton>
-                {/* Botão Cancelar */}
                 <CancelButton onClick={() => handleCancelReservation(reservation.id)}>
                   Cancelar
                 </CancelButton>
