@@ -10,7 +10,7 @@ export function NavbarComAvatar() {
       <nav>
         <ul>
           <Link to="/">
-          <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" />
           </Link>
 
           <li>
@@ -20,7 +20,6 @@ export function NavbarComAvatar() {
             </label>
 
             <ul className="dropdown-menu">
-              <li><a href="/pages/auth/login.html">PERFIL</a></li>
               <li><a href="/">SAIR</a></li>
             </ul>
           </li>
